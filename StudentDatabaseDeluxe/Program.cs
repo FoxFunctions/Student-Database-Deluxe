@@ -29,7 +29,7 @@
                 WhichTopicAndPrintTopic();
                 while (true)
                 {
-                    Console.WriteLine("Would you like to Learn about another student? Please enter y/n");
+                    Console.WriteLine("Would you like to Learn about another student? Please enter y/n. Or, to view the directory again, please type: directory.");
                     string anotherStudent = Console.ReadLine().ToLower().Trim();
                     if (anotherStudent == "y")
                     {
@@ -40,6 +40,11 @@
                     else if (anotherStudent == "n")
                     {
                         break;
+                    }
+                    else if (anotherStudent.Contains("dir"))
+                    {
+                        PrintDirectory();
+                        continue;
                     }
                     else
                     {
@@ -84,7 +89,7 @@
                 }
                 while (true)
                 {
-                    Console.WriteLine("Would you like another opportunity to review our students?");
+                    Console.WriteLine("Would you like another opportunity to review our students? Please type y/n");
                     string viewAgain = Console.ReadLine().ToLower().Trim();
 
                     if (viewAgain == "y")
@@ -146,7 +151,7 @@
             Console.WriteLine("We will need to gather some information on the new student to add them to the database.");
             studentName.Add(GetInput("First, What is the new students first name?"));
             favoriteFood.Add(GetInput("Next, What is the new student's favorite food"));
-            homeTown.Add(GetInput("Next, what is the new student's hometown. Kindly enter in the City, State format."));
+            homeTown.Add(GetInput("Next, what is the new student's hometown. Kindly enter your response in City, State format."));
             favoriteColor.Add(GetInput("Last, what is the new student's favorite color."));            
         }
         public static void PrintDirectory()
@@ -175,11 +180,12 @@
                         return i;
                     }
                 }
-                catch (FormatException e)
+                catch (Exception e)
                 {
                     Console.WriteLine("That is not a valid response. Please enter a number 1-" + studentName.Count);
                     continue;
                 }
+                
             }
         }
         public static void WhichTopicAndPrintTopic()
@@ -195,8 +201,7 @@
                 if (s.Contains("town"))
                 {
                     Console.WriteLine($"{studentName[userStudentChoice]} was born in {homeTown[userStudentChoice]}.");
-
-                    Console.WriteLine($"Would you like to know anything else about {studentName[userStudentChoice]}. Please enter y/n");
+                    Console.WriteLine($"Would you like to know anything else about {studentName[userStudentChoice]}? Please enter y/n");
                     string r = Console.ReadLine().ToLower().Trim();
                     if (r == "y")
                     {
@@ -215,7 +220,7 @@
                 else if (s.Contains("food"))
                 {
                     Console.WriteLine($"{studentName[userStudentChoice]}'s favorite food is {favoriteFood[userStudentChoice]}.");
-                    Console.WriteLine($"Would you like to know anything else about {studentName[userStudentChoice]}. Please enter y/n");
+                    Console.WriteLine($"Would you like to know anything else about {studentName[userStudentChoice]}? Please enter y/n");
                     string r = Console.ReadLine().ToLower().Trim();
                     if (r == "y")
                     {
@@ -234,7 +239,7 @@
                 else if (s.Contains("color"))
                 {
                     Console.WriteLine($"{studentName[userStudentChoice]}'s favorite color is {favoriteColor[userStudentChoice]}.");
-                    Console.WriteLine($"Would you like to know anything else about {studentName[userStudentChoice]}. Please enter y/n");
+                    Console.WriteLine($"Would you like to know anything else about {studentName[userStudentChoice]}? Please enter y/n");
                     string r = Console.ReadLine().ToLower().Trim();
                     if (r == "y")
                     {
