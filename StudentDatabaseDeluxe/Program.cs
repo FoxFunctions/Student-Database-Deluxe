@@ -13,18 +13,30 @@
         {
             while (runAgain)
             {
-                Console.WriteLine("Welcome to the Student Database. Would you like to begin by viewing a directory of all students or proceed to viewing the database? Please type directory to view the directory or type database to view the database.");
-                string databaseOrDirectory = Console.ReadLine().ToLower().Trim();
-
-                if (databaseOrDirectory.Contains("dir"))
+                while (true)
                 {
-                    PrintDirectory();
+                    Console.WriteLine("Welcome to the Student Database. Would you like to begin by viewing a directory of all students or proceed to viewing the database? Please type directory to view the directory or type database to view the database.");
+                    string databaseOrDirectory = Console.ReadLine().ToLower().Trim();
 
-                    userStudentChoice = WhichStudent() - 1;
-                }
-                else if (databaseOrDirectory.Contains("data"))
-                {
-                    userStudentChoice = WhichStudent() - 1;
+                    if (databaseOrDirectory.Contains("dir"))
+                    {
+                        PrintDirectory();
+
+                        userStudentChoice = WhichStudent() - 1;
+                        break;
+                    }
+                    else if (databaseOrDirectory.Contains("data"))
+                    {
+                        userStudentChoice = WhichStudent() - 1;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, I didn't understand that. Please enter one of the following.");
+                        Console.WriteLine("Directory");
+                        Console.WriteLine("Database");
+                        continue;
+                    }
                 }
                 WhichTopicAndPrintTopic();
                 while (true)
